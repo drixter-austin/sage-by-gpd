@@ -1,36 +1,35 @@
 const stats = [
   {
-    value: "4.2x",
-    label: "Average ROAS Across Managed Accounts",
-  },
-  {
     value: "150+",
-    label: "Brands Supported",
+    label: "clients across the US, UK, and Australia",
   },
   {
     value: "68%",
-    label: "Average Increase in Qualified Traffic",
+    label: "average increase in qualified leads",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Our paid and organic content is finally working together — we're seeing compounding results for the first time.",
-    author: "Sophie R.",
+      "Finally, a team that explains the why behind the numbers. Reporting is clear and actually helps us make decisions.",
+    author: "Mark T.",
+    role: "Home Services Business",
+    country: "United States",
+  },
+  {
+    quote:
+      "Our paid and organic content is finally working together. More qualified leads and lower cost per lead.",
+    author: "Sophie K.",
+    role: "SaaS Company",
+    country: "United Kingdom",
+  },
+  {
+    quote:
+      "Our ROAS went from 1.6x to 4.2x in just 90 days. Sage knows how to put ad spend to work.",
+    author: "Jessica L.",
     role: "E-commerce Brand Owner",
-  },
-  {
-    quote:
-      "Our ROAS went from 1.8x to 4.2x in just 90 days. Sage doesn't just run ads — they build a system.",
-    author: "Jordan L.",
-    role: "DTC Founder",
-  },
-  {
-    quote:
-      "We went from invisible on Google to ranking on the first page for 12 key terms in under six months.",
-    author: "Mia T.",
-    role: "Service Business Owner",
+    country: "Australia",
   },
 ];
 
@@ -47,12 +46,13 @@ export default function Results() {
           {testimonials.map((t) => (
             <div
               key={t.author}
-              className="rounded-2xl border border-sage-whisper bg-mist p-8"
+              className="flex flex-col rounded-2xl border border-sage-whisper bg-mist p-8"
             >
-              <div className="text-4xl font-serif text-sage-core/30">
+              {/* Gold quotation mark */}
+              <div className="text-5xl font-serif leading-none text-warm-gold">
                 &ldquo;
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-forest/80 italic">
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-forest/80 italic">
                 {t.quote}
               </p>
               <div className="mt-6 flex items-center gap-3">
@@ -63,7 +63,9 @@ export default function Results() {
                   <p className="text-sm font-semibold text-forest">
                     {t.author}
                   </p>
-                  <p className="text-xs text-forest/60">{t.role}</p>
+                  <p className="text-xs text-forest/60">
+                    {t.role}, {t.country}
+                  </p>
                 </div>
               </div>
             </div>
@@ -71,7 +73,7 @@ export default function Results() {
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid gap-8 rounded-2xl bg-forest p-10 sm:grid-cols-3 md:p-14">
+        <div className="mt-16 grid gap-8 rounded-2xl bg-forest p-10 sm:grid-cols-2 md:p-14">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-4xl font-bold text-warm-gold sm:text-5xl">

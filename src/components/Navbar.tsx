@@ -27,7 +27,7 @@ export default function Navbar() {
             <li key={l.label}>
               <a
                 href={l.href}
-                className="text-sm font-medium text-white/80 transition-colors hover:text-warm-gold"
+                className={`text-sm font-medium transition-colors hover:text-warm-gold ${l.label === "Home" ? "text-warm-gold" : "text-white/80"}`}
               >
                 {l.label}
               </a>

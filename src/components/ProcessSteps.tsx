@@ -3,14 +3,26 @@ const steps = [
     number: "01",
     title: "Book a Free Strategy Call",
     description:
-      "Thirty minutes is all it takes to see what a proper strategy looks like for your business.",
+      "Before we touch a single piece of content, we get into your business. Your market, your goals, what’s worked and what hasn’t. No templates, no assumptions. Just a clear conversation about where you want to go.",
     icon: (
-      <svg className="h-8 w-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="4" y="6" width="24" height="22" rx="3" />
-        <line x1="4" y1="12" x2="28" y2="12" />
-        <line x1="10" y1="3" x2="10" y2="8" />
-        <line x1="22" y1="3" x2="22" y2="8" />
-        <circle cx="16" cy="20" r="3" />
+      <svg
+        className="h-8 w-8"
+        viewBox="0 0 32 32"
+        fill="none"
+        stroke="#C5964C"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Notepad / clipboard */}
+        <rect x="7" y="4" width="18" height="24" rx="2" />
+        {/* Clipboard clip */}
+        <path d="M12 4v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
+        {/* Lines on notepad */}
+        <line x1="11" y1="11" x2="21" y2="11" />
+        <line x1="11" y1="15" x2="21" y2="15" />
+        <line x1="11" y1="19" x2="21" y2="19" />
+        <line x1="11" y1="23" x2="17" y2="23" />
       </svg>
     ),
   },
@@ -18,14 +30,28 @@ const steps = [
     number: "02",
     title: "Get Your Custom Growth Plan",
     description:
-      "We build a tailored SEO, content, and social/paid strategy designed around your goals, budget, and stage.",
+      "From that conversation, we build your plan. SEO, content, and social mapped together, with clear priorities and targets you can hold us to.",
     icon: (
-      <svg className="h-8 w-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M6 4h20v24H6z" />
-        <line x1="10" y1="10" x2="22" y2="10" />
-        <line x1="10" y1="14" x2="22" y2="14" />
-        <line x1="10" y1="18" x2="18" y2="18" />
-        <path d="M18 22l2 2 4-4" />
+      <svg
+        className="h-8 w-8"
+        viewBox="0 0 32 32"
+        fill="none"
+        stroke="#C5964C"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Document body */}
+        <rect x="7" y="3" width="18" height="26" rx="2" />
+        {/* Checklist items */}
+        <rect x="11" y="9" width="3" height="3" rx="0.5" />
+        <path d="M11.5 11l1 1 2-2" />
+        <line x1="17" y1="10.5" x2="22" y2="10.5" />
+        <rect x="11" y="15" width="3" height="3" rx="0.5" />
+        <path d="M11.5 17l1 1 2-2" />
+        <line x1="17" y1="16.5" x2="22" y2="16.5" />
+        <rect x="11" y="21" width="3" height="3" rx="0.5" />
+        <line x1="17" y1="22.5" x2="22" y2="22.5" />
       </svg>
     ),
   },
@@ -33,11 +59,24 @@ const steps = [
     number: "03",
     title: "We Execute. You Scale.",
     description:
-      "Sage handles the execution — from publishing to optimization — so you can focus on running your business.",
+      "Content goes live. Rankings build. Your social presence grows on a schedule that compounds over time. We track what’s moving, report in plain numbers, and double down on what’s working.",
     icon: (
-      <svg className="h-8 w-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M4 28l7-7M11 21l3-10 10-3-3 10-10 3z" />
-        <circle cx="16" cy="16" r="2" fill="currentColor" />
+      <svg
+        className="h-8 w-8"
+        viewBox="0 0 32 32"
+        fill="none"
+        stroke="#C5964C"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Bar chart bars */}
+        <rect x="5" y="20" width="5" height="8" rx="1" />
+        <rect x="13" y="14" width="5" height="14" rx="1" />
+        <rect x="21" y="8" width="5" height="20" rx="1" />
+        {/* Upward trend arrow */}
+        <path d="M6 18L15 11l6 3 5-7" />
+        <path d="M23 7h4v4" />
       </svg>
     ),
   },
@@ -54,26 +93,38 @@ export default function ProcessSteps() {
         <div className="relative mt-16 grid gap-8 md:grid-cols-3">
           {steps.map((step, i) => (
             <div key={step.number} className="relative">
-              {/* Connector arrow (hidden on last item and mobile) */}
+              {/* Connector arrow between cards — desktop only */}
               {i < steps.length - 1 && (
-                <div className="absolute top-12 -right-4 hidden text-sage-core/40 md:block">
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className="absolute top-1/2 -right-5 z-10 hidden -translate-y-1/2 md:block">
+                  <svg
+                    className="h-6 w-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </div>
               )}
 
-              <div className="rounded-2xl border border-sage-whisper bg-mist p-8 text-center">
-                <span className="font-serif text-4xl font-bold text-sage-core/30">
+              <div className="rounded-2xl border-l-4 border-sage-core bg-sage-whisper p-8 text-center">
+                {/* Large step number */}
+                <span className="font-serif text-5xl font-bold text-sage-core/30">
                   {step.number}
                 </span>
-                <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-xl bg-forest text-white">
+
+                {/* Icon circle — dark green bg, gold-outlined icon */}
+                <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-full bg-forest">
                   {step.icon}
                 </div>
-                <h3 className="mt-4 text-lg font-bold text-forest">
+
+                <h3 className="mt-5 text-lg font-bold text-forest">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-forest/70">
+                <p className="mt-3 text-sm leading-relaxed text-forest/70">
                   {step.description}
                 </p>
               </div>

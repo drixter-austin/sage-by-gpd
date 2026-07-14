@@ -25,14 +25,14 @@ const services = [
 
 function CenterSwanLogo() {
   return (
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-24 w-auto sm:h-32 md:h-40">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-28 w-auto sm:h-36 md:h-44">
       <defs>
-        {/* Tint the real swan mark mint to read on the dark forest background */}
-        <filter id="centerSwanMint">
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.722  0 0 0 0 0.831  0 0 0 0 0.737  0 0 0 1 0"
-          />
+        <filter id="centerSwanContrast">
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="2.2" intercept="0.15" />
+            <feFuncG type="linear" slope="1.6" intercept="0.25" />
+            <feFuncB type="linear" slope="2.2" intercept="0.15" />
+          </feComponentTransfer>
         </filter>
       </defs>
       <image
@@ -42,7 +42,7 @@ function CenterSwanLogo() {
         width="100"
         height="100"
         preserveAspectRatio="xMidYMid meet"
-        filter="url(#centerSwanMint)"
+        filter="url(#centerSwanContrast)"
       />
     </svg>
   );
@@ -125,7 +125,7 @@ export default function StrategyCircle() {
     >
       {/* Dot-grid background texture */}
       <div
-        className="absolute inset-0 opacity-[0.07]"
+        className="absolute inset-0 opacity-[0.12]"
         style={{
           backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
           backgroundSize: "20px 20px",
@@ -138,42 +138,39 @@ export default function StrategyCircle() {
         </h2>
 
         {/* Strategy circle visual */}
-        <div className="relative mx-auto mt-14 flex h-[360px] w-[360px] items-center justify-center sm:h-[460px] sm:w-[460px] md:h-[520px] md:w-[520px]">
+        <div className="relative mx-auto mt-14 flex h-[380px] w-[380px] items-center justify-center sm:h-[480px] sm:w-[480px] md:h-[560px] md:w-[560px]">
           {/* Gold circular rings */}
           <svg
             className="absolute inset-0 h-full w-full"
-            viewBox="0 0 520 520"
+            viewBox="0 0 560 560"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
               <radialGradient id="centerGlow" cx="50%" cy="50%" r="35%">
-                <stop offset="0%" stopColor="#7BB58A" stopOpacity="0.18" />
+                <stop offset="0%" stopColor="#7BB58A" stopOpacity="0.22" />
                 <stop offset="100%" stopColor="#1B3A2D" stopOpacity="0" />
               </radialGradient>
-              <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
-              </filter>
             </defs>
             {/* Center glow */}
-            <circle cx="260" cy="260" r="180" fill="url(#centerGlow)" />
+            <circle cx="280" cy="280" r="200" fill="url(#centerGlow)" />
             {/* Main gold ring — thick and prominent */}
-            <circle cx="260" cy="260" r="225" stroke="#C5964C" strokeWidth="3.5" opacity="0.65" />
+            <circle cx="280" cy="280" r="240" stroke="#C5964C" strokeWidth="4" opacity="0.7" />
             {/* Thin outer ring */}
-            <circle cx="260" cy="260" r="245" stroke="#C5964C" strokeWidth="0.75" opacity="0.2" />
+            <circle cx="280" cy="280" r="265" stroke="#C5964C" strokeWidth="0.75" opacity="0.2" />
             {/* Inner ring */}
-            <circle cx="260" cy="260" r="150" stroke="#C5964C" strokeWidth="1" opacity="0.18" />
+            <circle cx="280" cy="280" r="165" stroke="#C5964C" strokeWidth="1" opacity="0.18" />
             {/* Inner-most ring */}
-            <circle cx="260" cy="260" r="110" stroke="#C5964C" strokeWidth="0.75" opacity="0.12" />
+            <circle cx="280" cy="280" r="120" stroke="#C5964C" strokeWidth="0.75" opacity="0.12" />
           </svg>
 
           {/* Center logo + text */}
           <div className="z-10 flex flex-col items-center">
             <CenterSwanLogo />
-            <span className="mt-2 text-lg font-bold tracking-[0.3em] text-[#B8D4BC] uppercase sm:text-xl md:text-2xl">
+            <span className="mt-3 text-xl font-bold tracking-[0.3em] text-white uppercase sm:text-2xl md:text-3xl">
               SAGE
             </span>
-            <span className="text-xs font-bold tracking-[0.25em] text-[#7BB58A]/70 uppercase sm:text-sm">
+            <span className="mt-1 text-sm font-bold tracking-[0.25em] text-[#7BB58A] uppercase sm:text-base">
               STRATEGY
             </span>
           </div>
@@ -187,7 +184,7 @@ export default function StrategyCircle() {
             return (
               <div
                 key={item.label}
-                className="absolute flex flex-col items-center gap-1.5"
+                className="absolute flex flex-col items-center gap-2"
                 style={{
                   left: `${x}%`,
                   top: `${y}%`,
@@ -197,16 +194,16 @@ export default function StrategyCircle() {
                 {/* Glow ring behind circle */}
                 <div className="relative">
                   <div
-                    className="absolute -inset-3 rounded-full opacity-30"
+                    className="absolute -inset-5 rounded-full opacity-50"
                     style={{
-                      background: "radial-gradient(circle, rgba(123,181,138,0.5) 0%, transparent 70%)",
+                      background: "radial-gradient(circle, rgba(90,160,110,0.6) 0%, transparent 65%)",
                     }}
                   />
-                  <div className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[#234A39] shadow-lg shadow-black/30 ring-1 ring-warm-gold/25 sm:h-14 sm:w-14">
+                  <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#1E3F30] shadow-xl shadow-black/40 ring-1 ring-warm-gold/30 sm:h-16 sm:w-16 md:h-[72px] md:w-[72px]">
                     <item.Icon />
                   </div>
                 </div>
-                <span className="text-[10px] font-semibold text-white/80 sm:text-xs">
+                <span className="text-xs font-semibold text-white/90 sm:text-sm">
                   {item.label}
                 </span>
               </div>

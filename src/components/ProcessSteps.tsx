@@ -89,13 +89,13 @@ export default function ProcessSteps() {
           {steps.map((step, i) => (
             <Fragment key={step.number}>
               <div
-                className="rounded-2xl p-8 shadow-lg"
+                className="rounded-2xl border border-sage-core/15 p-8 shadow-lg"
                 style={{
-                  background: "linear-gradient(180deg, #EAF2E8 0%, #D4E5D0 100%)",
+                  background: "linear-gradient(180deg, #EAF2E8 0%, #C8DFBE 100%)",
                 }}
               >
                 {/* Large step number — top left */}
-                <span className="font-serif text-5xl font-bold text-sage-core/25 sm:text-6xl">
+                <span className="block text-left font-serif text-6xl font-bold text-sage-core/20 sm:text-7xl">
                   {step.number}
                 </span>
 
@@ -109,22 +109,22 @@ export default function ProcessSteps() {
                   </h3>
                 </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-forest/65">
+                <p className="mt-4 text-sm leading-relaxed text-forest/60">
                   {step.description}
                 </p>
               </div>
 
-              {/* Arrow between cards */}
+              {/* Bold filled arrow between cards */}
               {i < steps.length - 1 && (
                 <div className="hidden items-center justify-center md:flex">
                   <svg
-                    width="28"
+                    width="36"
                     height="28"
-                    viewBox="0 0 24 24"
-                    fill="#5A8F6E"
+                    viewBox="0 0 36 28"
+                    fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M5 12h14M13 6l6 6-6 6" stroke="#5A8F6E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M4 14H28M22 6L30 14L22 22" stroke="#5A8F6E" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
               )}

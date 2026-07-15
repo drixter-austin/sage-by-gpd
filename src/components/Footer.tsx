@@ -9,12 +9,12 @@ function YouTubeIcon() {
   );
 }
 
-function TelegramIcon() {
+function InstagramIcon() {
   return (
     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 3L1 11L8 13L21 3Z" />
-      <path d="M8 13L10 20L14 16L8 13Z" />
-      <path d="M21 3L10 20" />
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="17.5" cy="6.5" r="1.5" fill="white" stroke="none" />
     </svg>
   );
 }
@@ -83,13 +83,13 @@ export default function Footer() {
               <a href="#" className="text-white/70 transition-colors hover:text-white" aria-label="YouTube">
                 <YouTubeIcon />
               </a>
-              <a href="#" className="text-white/70 transition-colors hover:text-white" aria-label="Telegram">
-                <TelegramIcon />
+              <a href="https://www.instagram.com/sagebygpd?igsh=MTBzNzRzY3d6ZmFiNQ%3D%3D" target="_blank" rel="noopener noreferrer" className="text-white/70 transition-colors hover:text-white" aria-label="Instagram">
+                <InstagramIcon />
               </a>
               <a href="#" className="text-white/70 transition-colors hover:text-white" aria-label="LinkedIn">
                 <LinkedInIcon />
               </a>
-              <a href="#" className="text-white/70 transition-colors hover:text-white" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=61591468593466&mibextid=wwXIfr&rdid=KMdJeGCb2LsZPzRC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1LC37sjMGH%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noopener noreferrer" className="text-white/70 transition-colors hover:text-white" aria-label="Facebook">
                 <FacebookIcon />
               </a>
             </div>

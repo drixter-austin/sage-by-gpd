@@ -1,10 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/meta-events";
+import { getUtmParams, buildCalendlyUtmQuery } from "@/lib/utm";
 
 export default function FinalCTA() {
   const hasFiredViewContent = useRef(false);
+  const [utmQuery, setUtmQuery] = useState("");
+
+  useEffect(() => {
+    setUtmQuery(buildCalendlyUtmQuery(getUtmParams()));
+  }, []);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -13,12 +19,12 @@ export default function FinalCTA() {
     document.body.appendChild(script);
 
     const handleCalendlyEvent = (e: MessageEvent) => {
-      if (
-        e.data?.event === "calendly.event_scheduled"
-      ) {
+      if (e.data?.event === "calendly.event_scheduled") {
+        const utm = getUtmParams();
         trackEvent("CompleteRegistration", {
           content_name: "Strategy Call Booking",
           status: "complete",
+          ...utm,
         });
       }
     };
@@ -39,9 +45,11 @@ export default function FinalCTA() {
       ([entry]) => {
         if (entry.isIntersecting && !hasFiredViewContent.current) {
           hasFiredViewContent.current = true;
+          const utm = getUtmParams();
           trackEvent("ViewContent", {
             content_name: "Booking Section",
             content_category: "Strategy Call",
+            ...utm,
           });
         }
       },
@@ -51,6 +59,9 @@ export default function FinalCTA() {
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
+
+  const calendlyBase =
+    "https://calendly.com/chloe-sagebygpd/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=1B3A2D&primary_color=C5964C";
 
   return (
     <section id="contact" className="bg-forest px-6 py-20 lg:px-16 lg:py-28">
@@ -66,11 +77,11 @@ export default function FinalCTA() {
           a clear plan forward.
         </p>
 
-        {/* Calendly inline embed */}
+        {/* Calendly inline embed — UTM params appended for attribution */}
         <div className="mt-10 overflow-hidden rounded-2xl bg-white">
           <div
             className="calendly-inline-widget"
-            data-url="https://calendly.com/chloe-sagebygpd/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=1B3A2D&primary_color=C5964C"
+            data-url={`${calendlyBase}${utmQuery}`}
             style={{ minWidth: "320px", height: "700px" }}
           />
         </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import MetaTracking from "@/components/MetaTracking";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,7 +51,6 @@ export default function RootLayout({
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '1347540847340919');
-          fbq('track', 'PageView');
         `}</Script>
         <noscript>
           <img
@@ -62,7 +62,10 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        <MetaTracking />
+        {children}
+      </body>
     </html>
   );
 }

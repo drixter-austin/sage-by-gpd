@@ -1,16 +1,55 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { trackEvent } from "@/lib/meta-events";
 
 export default function FinalCTA() {
+  const hasFiredViewContent = useRef(false);
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
+
+    const handleCalendlyEvent = (e: MessageEvent) => {
+      if (
+        e.data?.event === "calendly.event_scheduled"
+      ) {
+        trackEvent("CompleteRegistration", {
+          content_name: "Strategy Call Booking",
+          status: "complete",
+        });
+      }
+    };
+
+    window.addEventListener("message", handleCalendlyEvent);
+
     return () => {
       document.body.removeChild(script);
+      window.removeEventListener("message", handleCalendlyEvent);
     };
+  }, []);
+
+  useEffect(() => {
+    const section = document.getElementById("contact");
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasFiredViewContent.current) {
+          hasFiredViewContent.current = true;
+          trackEvent("ViewContent", {
+            content_name: "Booking Section",
+            content_category: "Strategy Call",
+          });
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   return (

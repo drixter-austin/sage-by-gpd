@@ -26,6 +26,13 @@ export default function FinalCTA() {
           status: "complete",
           ...utm,
         });
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "strategy_call_booked", {
+            event_category: "conversion",
+            event_label: "Calendly Booking",
+            ...utm,
+          });
+        }
       }
     };
 
